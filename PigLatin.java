@@ -76,7 +76,7 @@ public class PigLatin {
 
     String[] best = new String[]{"*emu", "4chan", "fish!", "fish", "the.", "cat!", "amazing?", "apple%"};
     for (int i = 0; i < best.length; i++) {
-      System.out.println(pigLatin(best[i]));
+      System.out.println(pigLatinBest(best[i]));
     }
     System.out.println();
 
