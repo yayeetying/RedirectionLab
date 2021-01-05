@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class PigLatin {
 
   //given a single word of at least 1 character:
@@ -62,23 +64,34 @@ public class PigLatin {
   }
 
   public static void main(String[] argsss) {
-    String[] simple = new String[]{"aya", "mock", "pie", "david", "aaron", "OYOYO", "O"};
-    for (int i = 0; i < simple.length; i++) {
-      System.out.println(pigLatinSimple(simple[i]));
-    }
-    System.out.println();
+    // String[] simple = new String[]{"aya", "mock", "pie", "david", "aaron", "OYOYO", "O"};
+    // for (int i = 0; i < simple.length; i++) {
+    //   System.out.println(pigLatinSimple(simple[i]));
+    // }
+    // System.out.println();
+    //
+    // String[] normal = new String[]{"the", "check", "skee", "emu", "grade", "BLP", "th", "O", "fish"};
+    // for (int i = 0; i < normal.length; i++) {
+    //   System.out.println(pigLatin(normal[i]));
+    // }
+    // System.out.println();
+    //
+    // String[] best = new String[]{"*emu", "4chan", "fish!", "fish", "the.", "cat!", "amazing?", "apple%"};
+    // for (int i = 0; i < best.length; i++) {
+    //   System.out.println(pigLatinBest(best[i]));
+    // }
+    // System.out.println();
 
-    String[] normal = new String[]{"the", "check", "skee", "emu", "grade", "BLP", "th", "O", "fish"};
-    for (int i = 0; i < normal.length; i++) {
-      System.out.println(pigLatin(normal[i]));
+    Scanner n = new Scanner( System.in );
+    //we are using the terminal input (System.in) as the string we read from
+    while (n.hasNextLine()) {
+      Scanner s = new Scanner(n.nextLine()); //takes the line
+      while (s.hasNext()) {
+        String data = s.next(); //takes every word-by-word of that line
+        System.out.print(pigLatinBest(data) + " ");
+      }
+      System.out.println();
     }
-    System.out.println();
-
-    String[] best = new String[]{"*emu", "4chan", "fish!", "fish", "the.", "cat!", "amazing?", "apple%"};
-    for (int i = 0; i < best.length; i++) {
-      System.out.println(pigLatinBest(best[i]));
-    }
-    System.out.println();
 
   }
 }

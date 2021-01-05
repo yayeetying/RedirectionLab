@@ -5,8 +5,8 @@ public class MakeStars {
     //we are using the terminal input (System.in) as the string we read from
     while (n.hasNextLine()) {
       Scanner s = new Scanner(n.nextLine()); //takes the line
-      while (s.hasNext()) { //takes every word-by-word of that line
-        String data = s.next();
+      while (s.hasNext()) {
+        String data = s.next(); //takes every word-by-word of that line
         for (int i = 0; i < data.length(); i++) {
           System.out.print("*");
         }
