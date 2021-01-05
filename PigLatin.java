@@ -43,22 +43,40 @@ public class PigLatin {
     }
     return pigLatinSimple(s);
   }
-  //
-  //
-  // public static String pigLatinBest(String s) {
-  //
-  // }
+
+  //given a single word of at least 1 character, can optionally have a punctuation mark afterwards
+  //start with a NON letter: leave alone
+  //punctuation is any non-letter, non-number symbol after the word
+  //punctuation must remain after you convert to pig latin
+  public static String pigLatinBest(String s) {
+    s = s.toLowerCase();
+    if (!Character.isLetter(s.charAt(0))) return s;
+
+    //last character is a punctuation
+    if (!Character.isLetter(s.charAt(s.length()-1)) && !Character.isDigit(s.charAt(s.length()-1))) {
+      return pigLatin(s.substring(0,s.length()-1)) + Character.toString(s.charAt(s.length()-1));
+    }
+    else {
+      return pigLatin(s);
+    }
+  }
 
   public static void main(String[] argsss) {
-    String[] simple = new String[]{"aya", "mock", "pie", "david", "aaron", "OYOYO"};
+    String[] simple = new String[]{"aya", "mock", "pie", "david", "aaron", "OYOYO", "O"};
     for (int i = 0; i < simple.length; i++) {
       System.out.println(pigLatinSimple(simple[i]));
     }
     System.out.println();
 
-    String[] normal = new String[]{"the", "check", "skee", "emu", "grade", "BLP", "th", "O"};
+    String[] normal = new String[]{"the", "check", "skee", "emu", "grade", "BLP", "th", "O", "fish"};
     for (int i = 0; i < normal.length; i++) {
       System.out.println(pigLatin(normal[i]));
+    }
+    System.out.println();
+
+    String[] best = new String[]{"*emu", "4chan", "fish!", "fish", "the.", "cat!", "amazing?", "apple%"};
+    for (int i = 0; i < best.length; i++) {
+      System.out.println(pigLatin(best[i]));
     }
     System.out.println();
 
