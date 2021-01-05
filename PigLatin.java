@@ -20,32 +20,47 @@ public class PigLatin {
     }
   }
 
-  // //given a single word of at least 1 character:
-  // //starts with any digraph: move first 2 letters to end, then add "ay"
-  // //rest, follow Simple's instructions^
-  // public static String pigLatin(String s) {
-  //   String[] digraphs = new String[]{"bl", "br", "ch", "ck", "cl",
-  //     "cr", "dr", "fl", "fr", "gh", "gl", "gr", "ng", "ph", "pl",
-  //     "pr", "qu", "sc", "sh", "sk", "sl", "sm", "sn", "sp", "st",
-  //     "sw", "th", "tr", "tw", "wh", "wr"}
-  //   if (s.length() < 2) return s;
+  //given a single word of at least 1 character:
+  //starts with any digraph: move first 2 letters to end, then add "ay"
+  //rest, follow Simple's instructions^
+  public static String pigLatin(String s) {
+    s = s.toLowerCase();
+    String[] digraphs = new String[]{"bl", "br", "ch", "ck", "cl",
+      "cr", "dr", "fl", "fr", "gh", "gl", "gr", "ng", "ph", "pl",
+      "pr", "qu", "sc", "sh", "sk", "sl", "sm", "sn", "sp", "st",
+      "sw", "th", "tr", "tw", "wh", "wr"};
+    if (s.length() < 2) return s;
+
+    String temp = "";
+    for (int i = 0; i < digraphs.length; i++) {
+      if (s.substring(0,2).equals(digraphs[i])) { //if word starts with digraph
+        for (int j = 2; j < s.length(); j++) {
+          temp += Character.toString(s.charAt(j));
+        }
+        temp += s.substring(0,2) + "ay";
+        return temp;
+      }
+    }
+    return pigLatinSimple(s);
+  }
   //
-  //   String temp = "";
-  //   for (int i = 0; i < digraphs.length; i++) {
-  //     if (s.substring(0,2).equals(digraphs[i])) {
-  //       for (int i = 2; i < s.length(); i++) {
-  //         temp += Character.toString()
-  //       }
-  //       //return
-  //     }
-  //   }
+  //
+  // public static String pigLatinBest(String s) {
+  //
   // }
 
   public static void main(String[] argsss) {
-    String[] simple = new String[]{"aya", "mock", "pie", "david", "aaron"};
+    String[] simple = new String[]{"aya", "mock", "pie", "david", "aaron", "OYOYO"};
     for (int i = 0; i < simple.length; i++) {
       System.out.println(pigLatinSimple(simple[i]));
     }
+    System.out.println();
+
+    String[] normal = new String[]{"the", "check", "skee", "emu", "grade", "BLP", "th", "O"};
+    for (int i = 0; i < normal.length; i++) {
+      System.out.println(pigLatin(normal[i]));
+    }
+    System.out.println();
 
   }
 }
