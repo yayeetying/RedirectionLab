@@ -31,7 +31,7 @@ public class PigLatin {
       "cr", "dr", "fl", "fr", "gh", "gl", "gr", "ng", "ph", "pl",
       "pr", "qu", "sc", "sh", "sk", "sl", "sm", "sn", "sp", "st",
       "sw", "th", "tr", "tw", "wh", "wr"};
-    if (s.length() < 2) return s;
+    if (s.length() < 2) return pigLatinSimple(s);
 
     String temp = "";
     for (int i = 0; i < digraphs.length; i++) {
@@ -88,7 +88,8 @@ public class PigLatin {
       Scanner s = new Scanner(n.nextLine()); //takes the line
       while (s.hasNext()) {
         String data = s.next(); //takes every word-by-word of that line
-        System.out.print(pigLatinBest(data) + " ");
+        System.out.print(pigLatinBest(data));
+        if (s.hasNext()) System.out.print(" ");
       }
       System.out.println();
     }
